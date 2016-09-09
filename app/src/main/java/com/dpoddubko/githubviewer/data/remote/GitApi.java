@@ -17,9 +17,12 @@ public interface GitApi {
     Call<List<UserRepo>> getRepos(@Path("user") String user);
 
     class Factory {
-        private Factory() {
-        }
         private static GitApi service;
+
+        private Factory() {
+            // hidden
+        }
+
         public static GitApi getInstance() {
             if (service == null) {
                 service = new Retrofit.Builder()
