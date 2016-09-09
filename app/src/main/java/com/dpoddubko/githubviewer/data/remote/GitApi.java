@@ -17,17 +17,18 @@ public interface GitApi {
     Call<List<UserRepo>> getRepos(@Path("user") String user);
 
     class Factory {
+        private Factory() {
+        }
         private static GitApi service;
-
         public static GitApi getInstance() {
             if (service == null) {
-                Retrofit retrofit = new Retrofit.Builder()
+                service = new Retrofit.Builder()
                         .addConverterFactory(GsonConverterFactory.create())
                         .baseUrl(BASE_URL)
-                        .build();
-                return service = retrofit.create(GitApi.class);
-            } else return service;
+                        .build()
+                        .create(GitApi.class);
+            }
+            return service;
         }
     }
 }
-

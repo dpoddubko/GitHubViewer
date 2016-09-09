@@ -16,6 +16,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.FieldMap;
 
 public class MainActivity extends AppCompatActivity {
     private EditText loginText;
@@ -28,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main);
         listView = (ListView) findViewById(R.id.list_view);
         loginText = (EditText) findViewById(R.id.loginText);
-
         button_refresh = (Button) findViewById(R.id.button_refresh);
         button_refresh.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
                 String user = loginText.getText().toString();
                 Call<List<UserRepo>> call = GitApi.Factory.getInstance().getRepos(user);
                 call.enqueue(new Callback<List<UserRepo>>() {
-
                     @Override
                     public void onResponse(Call<List<UserRepo>> call, Response<List<UserRepo>> response) {
                         String[] repos = new String[response.body().size()];
