@@ -13,23 +13,25 @@ import com.dpoddubko.githubviewer.data.remote.GitApi;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.FieldMap;
 
 public class MainActivity extends AppCompatActivity {
-    private EditText loginText;
-    private Button button_refresh;
-    private ListView listView;
+    @BindView(R.id.list_view)
+    ListView listView;
+    @BindView(R.id.loginText)
+    EditText loginText;
+    @BindView(R.id.button_refresh)
+    Button button_refresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        listView = (ListView) findViewById(R.id.list_view);
-        loginText = (EditText) findViewById(R.id.loginText);
-        button_refresh = (Button) findViewById(R.id.button_refresh);
+        ButterKnife.bind(this);
         button_refresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
