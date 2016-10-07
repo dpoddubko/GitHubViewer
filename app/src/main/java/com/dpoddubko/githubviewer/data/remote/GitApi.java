@@ -1,5 +1,6 @@
 package com.dpoddubko.githubviewer.data.remote;
 
+import com.dpoddubko.githubviewer.data.model.Directory;
 import com.dpoddubko.githubviewer.data.model.UserRepo;
 
 import java.util.List;
@@ -15,6 +16,12 @@ public interface GitApi {
 
     @GET("users/{user}/repos")
     Call<List<UserRepo>> getRepos(@Path("user") String user);
+
+    @GET("users/{user}/starred")
+    Call<List<UserRepo>> getStars(@Path("user") String user);
+
+    @GET("repos/{user}/{repo}/contents")
+    Call<List<Directory>> getDir(@Path("user") String user, @Path("repo") String repo);
 
     class Factory {
         private static GitApi service;
