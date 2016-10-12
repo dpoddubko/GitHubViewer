@@ -20,8 +20,10 @@ public interface GitApi {
     @GET("users/{user}/starred")
     Call<List<UserRepo>> getStars(@Path("user") String user);
 
-    @GET("repos/{user}/{repo}/contents")
-    Call<List<Directory>> getDir(@Path("user") String user, @Path("repo") String repo);
+    @GET("repos/{name}/{repo}/contents/{path}")
+    Call<List<Directory>> getDir(@Path("name") String full,
+                                 @Path("repo") String name,
+                                 @Path("path") String path);
 
     class Factory {
         private static GitApi service;

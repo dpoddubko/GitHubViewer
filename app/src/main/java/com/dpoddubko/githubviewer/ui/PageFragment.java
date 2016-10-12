@@ -65,7 +65,7 @@ public class PageFragment extends Fragment {
                     public void onItemClick(AdapterView<?> adapter, View v, int position,
                                             long arg3) {
                         String fullName = (String) adapter.getItemAtPosition(position);
-                        Intent intent = DirectoryActivity.newIntent(getActivity(), fullName);
+                        Intent intent = DirectoryActivity.newIntent(getActivity(), fullName, "");
                         startActivity(intent);
                     }
                 });
